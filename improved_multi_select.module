@@ -1,6 +1,6 @@
 <?php
 /**
- * Implements hook_init().
+ * Implementation of hook_init().
  */
 function improved_multi_select_init() {
   $isEnabled = FALSE;
@@ -40,23 +40,22 @@ function improved_multi_select_init() {
     }
   }
   if ($isEnabled) {
-    drupal_add_css(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css');
-    drupal_add_js(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js');
+    drupal_add_css(drupal_get_path('module', 'improved_multi_select') .'/improved_multi_select.css');
+    drupal_add_js(drupal_get_path('module', 'improved_multi_select') .'/improved_multi_select.js');
   }
 }
 
 /**
- * Implements hook_menu().
+ * Implementation of hook_menu().
  */
 function improved_multi_select_menu() {
   $items = array();
-  $items['admin/config/user-interface/improved_multi_select'] = array(
+  $items['admin/settings/improved_multi_select'] = array(
     'title' => 'Improved Multi Select',
     'description' => 'Configure Improved Multi Select module.',
     'page callback' => 'drupal_get_form',
     'page arguments' => array('improved_multi_select_admin'),
     'access arguments' => array('administer site configuration'),
-    'type' => MENU_NORMAL_ITEM,
   );
   return $items;
 }

@@ -5,6 +5,15 @@
 	cursor:pointer;
 	background:none;
 }
+.improvedselect ul{
+	display:block;
+	border:1px solid gray;
+	background:white;
+	padding:0;
+	margin:0;
+	list-style:none;
+	overflow:auto;
+}
 .improvedselect .del_all:hover,
 .improvedselect .add_all:hover,
 .improvedselect .del:hover,
@@ -46,17 +55,10 @@
 	color:white;
 	background:#3399FF;
 }
-.improvedselect ul.improvedselect_sel,
-.improvedselect ul.improvedselect_all{
+.improvedselect .improvedselect_sel,
+.improvedselect .improvedselect_all{
 	width:40%;
 	height:200px;
-	overflow:auto;
-	margin:0;
-	padding:0;
-	display:block;
-	border:1px solid gray;
-	background:white;
-	list-style:none;
 	overflow:auto;
 }
 .improvedselect .improvedselect_all{
