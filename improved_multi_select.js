@@ -47,6 +47,18 @@ Drupal.behaviors.improved_multi_select = function(context) {
       $('#improvedselect-'+ sid +' .improvedselect_sel li').each(function(){
         $('#'+ sid +' [value="'+ $(this).attr('so') +'"]').attr("selected", "selected");
       });
+      improvedselectReorder(sid);
+    }
+
+    function improvedselectReorder(sid){
+      $('#'+sid).find('option').each(function(){
+        if ($(this).attr("selected")) {
+          $('#improvedselect-'+ sid +' .improvedselect_sel').append($('#improvedselect-'+ sid +' .improvedselect_sel [so="'+ $(this).attr('value') +'"]'));
+        }
+        else {
+          $('#improvedselect-'+ sid +' .improvedselect_all').append($('#improvedselect-'+ sid +' .improvedselect_all [so="'+ $(this).attr('value') +'"]'));
+        }
+      });
     }
 
     $('.improvedselect .add').click(function(){
