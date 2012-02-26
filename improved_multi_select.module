@@ -6,7 +6,7 @@
  */
 
 /**
- * Implementation of hook_init().
+ * Implements hook_init().
  */
 function improved_multi_select_init() {
   $is_enabled = FALSE;
@@ -24,13 +24,13 @@ function improved_multi_select_init() {
     }
   }
   if ($is_enabled) {
-    drupal_add_css(drupal_get_path('module', 'improved_multi_select') .'/improved_multi_select.css');
-    drupal_add_js(drupal_get_path('module', 'improved_multi_select') .'/improved_multi_select.js');
+    drupal_add_css(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css');
+    drupal_add_js(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js');
   }
 }
 
 /**
- * Implementation of hook_menu().
+ * Implements hook_menu().
  */
 function improved_multi_select_menu() {
   $items = array();

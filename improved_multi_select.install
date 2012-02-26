@@ -5,7 +5,7 @@
  */
 
 /**
- * Implementation of hook_install().
+ * Implements hook_install().
  */
 function improved_multi_select_install() {
   variable_set('improved_multi_select:isall', 0);
@@ -13,7 +13,7 @@ function improved_multi_select_install() {
   drupal_set_message(t('Module @module installed successfully.', array('@module' => 'Improved Multi Select')));
 }
 /**
- * Implementation of hook_uninstall().
+ * Implements hook_uninstall().
  */
 function improved_multi_select_uninstall() {
   variable_del('improved_multi_select:isall');
