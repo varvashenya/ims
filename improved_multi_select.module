@@ -1,11 +1,17 @@
 <?php
+
+/**
+ * @file
+ * The improved_multi_select module main php code
+ */
+
 /**
  * Implements hook_init().
  */
 function improved_multi_select_init() {
-  $isEnabled = FALSE;
+  $is_enabled = FALSE;
   if (variable_get('improved_multi_select:isall', 0)) {
-    $isEnabled = TRUE;
+    $is_enabled = TRUE;
   }
   else {
     $arg = arg();
@@ -21,25 +27,25 @@ function improved_multi_select_init() {
           }
         }
         if (count($url) > 0) {
-          $curUrl = array();
-          $curUrl[0] = implode('/', $arg);
-          $curUrl[1] = trim(url($curUrl[0]), '/');
-          if ($curUrl[0] == $curUrl[1]) {
-            unset($curUrl[1]);
+          $cur_url = array();
+          $cur_url[0] = implode('/', $arg);
+          $cur_url[1] = trim(url($cur_url[0]), '/');
+          if ($cur_url[0] == $cur_url[1]) {
+            unset($cur_url[1]);
           }
           if (drupal_is_front_page()) {
-            $curUrl[count($curUrl)] = '<front>';
+            $cur_url[count($cur_url)] = '<front>';
           }
           foreach ($url as $key => $value) {
-            if (!$isEnabled and array_search($value, $curUrl) !== FALSE) {
-              $isEnabled = TRUE;
+            if (!$is_enabled and array_search($value, $cur_url) !== FALSE) {
+              $is_enabled = TRUE;
             }
           }
         }
       }
     }
   }
-  if ($isEnabled) {
+  if ($is_enabled) {
     drupal_add_css(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css');
     drupal_add_js(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js');
   }
