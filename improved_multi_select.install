@@ -1,0 +1,22 @@
+<?php
+/**
+ * @file
+ * Uninstall and install for improved_multi_select module
+ */
+
+/**
+ * Implements hook_install().
+ */
+function improved_multi_select_install() {
+  variable_set('improved_multi_select:isall', 0);
+  variable_set('improved_multi_select:url', '');
+  drupal_set_message(st('Module @module installed successfully.', array('@module' => 'Improved Multi Select')));
+}
+/**
+ * Implements hook_uninstall().
+ */
+function improved_multi_select_uninstall() {
+  variable_del('improved_multi_select:isall');
+  variable_del('improved_multi_select:url');
+  drupal_set_message(st('Module @module uninstalled successfully.', array('@module' => 'Improved Multi Select')));
+}
