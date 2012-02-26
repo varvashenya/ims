@@ -16,31 +16,9 @@ function improved_multi_select_init() {
   else {
     $arg = arg();
     if (isset($arg[0]) and !($arg[0] == 'system' or $arg[0] == 'public')) {
-      if ($url = explode("\n", variable_get('improved_multi_select:url', ''))) {
-        foreach ($url as $key => $value) {
-          $value = trim($value);
-          if (empty($value)) {
-            unset($url[$value]);
-          }
-          else {
-            $url[$key] = $value;
-          }
-        }
-        if (count($url) > 0) {
-          $cur_url = array();
-          $cur_url[0] = implode('/', $arg);
-          $cur_url[1] = trim(url($cur_url[0]), '/');
-          if ($cur_url[0] == $cur_url[1]) {
-            unset($cur_url[1]);
-          }
-          if (drupal_is_front_page()) {
-            $cur_url[count($cur_url)] = '<front>';
-          }
-          foreach ($url as $key => $value) {
-            if (!$is_enabled and array_search($value, $cur_url) !== FALSE) {
-              $is_enabled = TRUE;
-            }
-          }
+      if ($url = variable_get('improved_multi_select:url', '')) {
+        if (drupal_match_path($_GET['q'], $url)) {
+          $is_enabled = TRUE;
         }
       }
     }
