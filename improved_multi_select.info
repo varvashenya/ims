@@ -1,6 +1,4 @@
-; $Id: $
 name = Improved Multi Select
 description = The Improved Multi Select module replace the default multi-select boxes with two pannel list and search.
 package = Form Elements
-version = VERSION
 core = 6.x

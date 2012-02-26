@@ -15,7 +15,7 @@ function improved_multi_select_install() {
 /**
  * Implementation of hook_uninstall().
  */
-function gbnews_uninstall() {
+function improved_multi_select_uninstall() {
   variable_del('improved_multi_select:isall');
   variable_del('improved_multi_select:url');
   drupal_set_message(t('Module @module uninstalled successfully.', array('@module' => 'Improved Multi Select')));
