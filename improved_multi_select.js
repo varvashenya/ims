@@ -8,24 +8,24 @@
           var improvedselect_id = $(this).attr('id');
           $(this).find('option').each(function(){
             if ($(this).attr("selected")) {
-              $('#improvedselect-'+ improvedselect_id +' .improvedselect_sel').append('<li so="'+ $(this).attr('value') +'">'+ $(this).text() +'</li>');
+              $('#improvedselect-'+ improvedselect_id +' .improvedselect_sel', context).append('<li so="'+ $(this).attr('value') +'">'+ $(this).text() +'</li>');
             }
             else {
-              $('#improvedselect-'+ improvedselect_id +' .improvedselect_all').append('<li so="'+ $(this).attr('value') +'">'+ $(this).text() +'</li>');
+              $('#improvedselect-'+ improvedselect_id +' .improvedselect_all', context).append('<li so="'+ $(this).attr('value') +'">'+ $(this).text() +'</li>');
             }
           });
-          $('#improvedselect-'+ improvedselect_id +' li').click(function(){
+          $('#improvedselect-'+ improvedselect_id +' li', context).click(function(){
             $(this).toggleClass('selected');
           });
           $(this).hide();
         });
-        $('.improvedselect_filter').keyup(function(){
+        $('.improvedselect_filter', context).keyup(function(){
           $text = $(this).val();
           if ($text.length) {
             if ($text != $(this).attr('prev')) {
               $(this).attr('prev', $text);
               patt = new RegExp($text,'i');
-              $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li').each(function(){
+              $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li', context).each(function(){
                 str = $(this).text();
                 if (str.match(patt)){
                   $(this).show();
@@ -38,67 +38,67 @@
           }
           else {
             $(this).attr('prev', '')
-            $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li').each(function(){
+            $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li', context).each(function(){
               $(this).show();
             });
           }
         });
 
         function improvedselectUpdate(sid){
-          $('#'+ sid +' option:selected').attr("selected", "");
-          $('#improvedselect-'+ sid +' .improvedselect_sel li').each(function(){
-            $('#'+ sid +' [value="'+ $(this).attr('so') +'"]').attr("selected", "selected");
+          $('#'+ sid +' option:selected', context).attr("selected", "");
+          $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
+            $('#'+ sid +' [value="'+ $(this).attr('so') +'"]', context).attr("selected", "selected");
           });
           improvedselectReorder(sid);
         }
 
         function improvedselectReorder(sid){
-          $('#'+sid).find('option').each(function(){
+          $('#'+sid, context).find('option').each(function(){
             if ($(this).attr("selected")) {
-              $('#improvedselect-'+ sid +' .improvedselect_sel').append($('#improvedselect-'+ sid +' .improvedselect_sel [so="'+ $(this).attr('value') +'"]'));
+              $('#improvedselect-'+ sid +' .improvedselect_sel', context).append($('#improvedselect-'+ sid +' .improvedselect_sel [so="'+ $(this).attr('value') +'"]'));
             }
             else {
-              $('#improvedselect-'+ sid +' .improvedselect_all').append($('#improvedselect-'+ sid +' .improvedselect_all [so="'+ $(this).attr('value') +'"]'));
+              $('#improvedselect-'+ sid +' .improvedselect_all', context).append($('#improvedselect-'+ sid +' .improvedselect_all [so="'+ $(this).attr('value') +'"]'));
             }
           });
         }
 
-        $('.improvedselect .add').click(function(){
+        $('.improvedselect .add', context).click(function(){
           sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_all .selected').each(function(){
+          $('#improvedselect-'+ sid +' .improvedselect_all .selected', context).each(function(){
             $(this).removeClass('selected');
             $(this).show();
-            $('#improvedselect-'+ sid +' .improvedselect_sel').append($(this));
+            $('#improvedselect-'+ sid +' .improvedselect_sel', context).append($(this));
           });
           improvedselectUpdate(sid);
         });
-        $('.improvedselect .del').click(function(){
+        $('.improvedselect .del', context).click(function(){
           sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_sel .selected').each(function(){
+          $('#improvedselect-'+ sid +' .improvedselect_sel .selected', context).each(function(){
             $(this).removeClass('selected');
-            $('#improvedselect-'+ sid +' .improvedselect_all').append($(this));
+            $('#improvedselect-'+ sid +' .improvedselect_all', context).append($(this));
           });
           improvedselectUpdate(sid);
         });
-        $('.improvedselect .add_all').click(function(){
+        $('.improvedselect .add_all', context).click(function(){
           sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_all li').each(function(){
+          $('#improvedselect-'+ sid +' .improvedselect_all li', context).each(function(){
             if ($(this).css('display') != 'none') {
               $(this).removeClass('selected');
-              $('#improvedselect-'+ sid +' .improvedselect_sel').append($(this));
+              $('#improvedselect-'+ sid +' .improvedselect_sel', context).append($(this));
             }
           });
           improvedselectUpdate(sid);
         });
-        $('.improvedselect .del_all').click(function(){
+        $('.improvedselect .del_all', context).click(function(){
           sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' input').val('');
-          $('#improvedselect-'+ sid +' input').attr('sid', '');
-          $('#improvedselect-'+ sid +' .improvedselect_sel li').each(function(){
+          $('#improvedselect-'+ sid +' input', context).val('');
+          $('#improvedselect-'+ sid +' input', context).attr('sid', '');
+          $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
             $(this).removeClass('selected');
-            $('#improvedselect-'+ sid +' .improvedselect_all').append($(this));
+            $('#improvedselect-'+ sid +' .improvedselect_all', context).append($(this));
           });
-          $('#improvedselect-'+ sid +' .improvedselect_all li').each(function(){
+          $('#improvedselect-'+ sid +' .improvedselect_all li', context).each(function(){
             $(this).show();
           });
           improvedselectUpdate(sid);
