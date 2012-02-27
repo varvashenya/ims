@@ -1,5 +1,4 @@
 <?php
-
 /**
  * @file
  * The improved_multi_select module main php code
@@ -57,8 +56,9 @@ function improved_multi_select_admin() {
   );
   $form['improved_multi_select:url'] = array(
     '#type' => 'textarea',
-    '#title' => t('Replace multi-select lists on listed pages'),
+    '#title' => t('Replace multi-select lists on specific pages'),
     '#default_value' => variable_get('improved_multi_select:url', ''),
+    '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
   );
   return system_settings_form($form);
 }
