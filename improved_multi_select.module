@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The improved_multi_select module main php code
+ * The improved_multi_select module main php code.
  */
 
 /**
@@ -10,6 +10,7 @@
  */
 function improved_multi_select_init() {
   $is_enabled = FALSE;
+
   if (variable_get('improved_multi_select:isall', 0)) {
     $is_enabled = TRUE;
   }
@@ -23,6 +24,7 @@ function improved_multi_select_init() {
       }
     }
   }
+
   if ($is_enabled) {
     drupal_add_css(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css');
     drupal_add_js(drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js');
@@ -34,6 +36,7 @@ function improved_multi_select_init() {
  */
 function improved_multi_select_menu() {
   $items = array();
+
   $items['admin/settings/improved_multi_select'] = array(
     'title' => 'Improved Multi Select',
     'description' => 'Configure Improved Multi Select module.',
@@ -41,6 +44,7 @@ function improved_multi_select_menu() {
     'page arguments' => array('improved_multi_select_admin'),
     'access arguments' => array('administer site configuration'),
   );
+
   return $items;
 }
 
@@ -49,16 +53,19 @@ function improved_multi_select_menu() {
  */
 function improved_multi_select_admin() {
   $form = array();
+
   $form['improved_multi_select:isall'] = array(
     '#type' => 'checkbox',
     '#title' => t('Replace all multi-select lists'),
     '#default_value' => variable_get('improved_multi_select:isall', 0),
   );
+
   $form['improved_multi_select:url'] = array(
     '#type' => 'textarea',
     '#title' => t('Replace multi-select lists on specific pages'),
     '#default_value' => variable_get('improved_multi_select:url', ''),
     '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
   );
+
   return system_settings_form($form);
 }
