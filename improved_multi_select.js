@@ -19,12 +19,13 @@
           });
           $(this).hide();
         });
+
         $('.improvedselect_filter', context).keyup(function(){
-          $text = $(this).val();
-          if ($text.length) {
-            if ($text != $(this).attr('prev')) {
-              $(this).attr('prev', $text);
-              patt = new RegExp($text,'i');
+          text = $(this).val();
+          if (text.length) {
+            if (text != $(this).attr('prev')) {
+              $(this).attr('prev', text);
+              patt = new RegExp(text,'i');
               $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li', context).each(function(){
                 str = $(this).text();
                 if (str.match(patt)){
@@ -55,14 +56,15 @@
         function improvedselectReorder(sid){
           $('#'+sid, context).find('option').each(function(){
             if ($(this).attr("selected")) {
-              $('#improvedselect-'+ sid +' .improvedselect_sel', context).append($('#improvedselect-'+ sid +' .improvedselect_sel [so="'+ $(this).attr('value') +'"]'));
+              $('#improvedselect-'+ sid +' .improvedselect_sel', context).append($('#improvedselect-'+ sid +' .improvedselect_sel [so="'+ $(this).attr('value') +'"]', context));
             }
             else {
-              $('#improvedselect-'+ sid +' .improvedselect_all', context).append($('#improvedselect-'+ sid +' .improvedselect_all [so="'+ $(this).attr('value') +'"]'));
+              $('#improvedselect-'+ sid +' .improvedselect_all', context).append($('#improvedselect-'+ sid +' .improvedselect_all [so="'+ $(this).attr('value') +'"]', context));
             }
           });
         }
 
+          // Add selected items.
         $('.improvedselect .add', context).click(function(){
           sid = $(this).attr('sid');
           $('#improvedselect-'+ sid +' .improvedselect_all .selected', context).each(function(){
@@ -72,6 +74,8 @@
           });
           improvedselectUpdate(sid);
         });
+
+          // Remove selected items.
         $('.improvedselect .del', context).click(function(){
           sid = $(this).attr('sid');
           $('#improvedselect-'+ sid +' .improvedselect_sel .selected', context).each(function(){
@@ -80,6 +84,8 @@
           });
           improvedselectUpdate(sid);
         });
+
+          // Remove all filtered items.
         $('.improvedselect .add_all', context).click(function(){
           sid = $(this).attr('sid');
           $('#improvedselect-'+ sid +' .improvedselect_all li', context).each(function(){
@@ -90,10 +96,12 @@
           });
           improvedselectUpdate(sid);
         });
+
+          // Remove all items.
         $('.improvedselect .del_all', context).click(function(){
           sid = $(this).attr('sid');
           $('#improvedselect-'+ sid +' input', context).val('');
-          $('#improvedselect-'+ sid +' input', context).attr('sid', '');
+          $('#improvedselect-'+ sid +' input', context).attr('prev', '');
           $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
             $(this).removeClass('selected');
             $('#improvedselect-'+ sid +' .improvedselect_all', context).append($(this));
