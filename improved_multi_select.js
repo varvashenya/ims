@@ -1,6 +1,6 @@
 Drupal.behaviors.improved_multi_select = function(context) {
   if ($('select[multiple]:not(.improvedselect-processed)', context).length > 0) {
-    $('select[multiple]', context).each(function(){
+    $('select[multiple]:not(.improvedselect-processed)', context).each(function(){
       $(this).addClass('improvedselect-processed');
       $(this).parent().append('<div class="improvedselect" sid="'+ $(this).attr('id') +'" id="improvedselect-'+ $(this).attr('id') +'"><div class="improvedselect-text-wrapper"><input type="text" class="improvedselect_filter" sid="'+ $(this).attr('id') +'" prev="" /></div><ul class="improvedselect_sel"></ul><ul class="improvedselect_all"></ul><div class="improvedselect_control"><span class="add" sid="'+ $(this).attr('id') +'">&gt;</span><span class="del" sid="'+ $(this).attr('id') +'">&lt;</span><span class="add_all" sid="'+ $(this).attr('id') +'">&raquo;</span><span class="del_all" sid="'+ $(this).attr('id') +'">&laquo;</span></div><div class="clear" /></div>');
       var improvedselect_id = $(this).attr('id');
