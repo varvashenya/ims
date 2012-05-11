@@ -19,24 +19,24 @@ Drupal.behaviors.improved_multi_select = function(context) {
     });
 
     $('.improvedselect_filter', context).keyup(function(){
-      text = $(this).val();
+      var text = $(this).val();
       if (text.length) {
         if (text != $(this).attr('prev')) {
           $(this).attr('prev', text);
-          patt = new RegExp(text, 'i');
+          var patt = new RegExp(text, 'i');
           $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li', context).each(function(){
-            str = $(this).text();
+            var str = $(this).text();
             if (str.match(patt)){
               $(this).show();
             }
             else{
-              $(this).hide('fast');
+              $(this).hide();
             }
           });
         }
       }
       else {
-        $(this).attr('prev', '')
+        $(this).attr('prev', '');
         $('#improvedselect-'+ $(this).attr('sid') +' .improvedselect_all li', context).each(function(){
           $(this).show();
         });
@@ -64,7 +64,7 @@ Drupal.behaviors.improved_multi_select = function(context) {
 
       // Add selected items.
     $('.improvedselect .add', context).click(function(){
-      sid = $(this).attr('sid');
+      var sid = $(this).attr('sid');
       $('#improvedselect-'+ sid +' .improvedselect_all .selected', context).each(function(){
         $(this).removeClass('selected');
         $(this).show();
@@ -75,7 +75,7 @@ Drupal.behaviors.improved_multi_select = function(context) {
 
       // Remove selected items.
     $('.improvedselect .del', context).click(function(){
-      sid = $(this).attr('sid');
+      var sid = $(this).attr('sid');
       $('#improvedselect-'+ sid +' .improvedselect_sel .selected', context).each(function(){
         $(this).removeClass('selected');
         $('#improvedselect-'+ sid +' .improvedselect_all', context).append($(this));
@@ -85,7 +85,7 @@ Drupal.behaviors.improved_multi_select = function(context) {
 
       // Remove all filtered items.
     $('.improvedselect .add_all', context).click(function(){
-      sid = $(this).attr('sid');
+      var sid = $(this).attr('sid');
       $('#improvedselect-'+ sid +' .improvedselect_all li', context).each(function(){
         if ($(this).css('display') != 'none') {
           $(this).removeClass('selected');
@@ -97,7 +97,7 @@ Drupal.behaviors.improved_multi_select = function(context) {
 
       // Remove all items.
     $('.improvedselect .del_all', context).click(function(){
-      sid = $(this).attr('sid');
+      var sid = $(this).attr('sid');
       $('#improvedselect-'+ sid +' input', context).val('');
       $('#improvedselect-'+ sid +' input', context).attr('prev', '');
       $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
