@@ -37,7 +37,7 @@
                 $(this).show();
               }
               else{
-                $(this).hide('fast');
+                $(this).hide();
               }
             });
           }
