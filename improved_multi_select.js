@@ -23,6 +23,33 @@
               $(this).toggleClass('selected');
             });
             $(this).hide();
+              // double click feature request
+            $('#improvedselect-'+ improvedselect_id +' li', context).dblclick(function(){
+                // add item
+              var selected = $(this).parent().find('li.selected');
+              var current_class = $(this).parent().attr('class');
+              if (current_class == 'improvedselect_all') {
+                  // store selected items
+                $(this).parent().find('li.selected').removeClass('selected');
+                $(this).addClass('selected');
+                $(this).parent().parent().find('.add').click();
+                  // restore selected items
+              }
+                // remove item
+              else {
+                $(this).parent().find('li.selected').removeClass('selected');
+                $(this).addClass('selected');
+                $(this).parent().parent().find('.del').click();
+              }
+              if (selected.length) {
+                for (var k = 0; k < selected.length; k++) {
+                  if ($(selected[k]).parent().attr('class') == current_class) {
+                    $(selected[k]).addClass('selected');
+                  }
+                }
+              }
+
+            });
           });
         }
 
