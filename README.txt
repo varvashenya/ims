@@ -8,4 +8,4 @@ add it to the second box. Likewise, you can select an item from the second box,
 click the remove button, and it goes back into the unselected box.
 You can also search by available options using search field.
 
-Install and configure (admin/config/user-interface/improved_multi_select)
+Install and configure (admin/config/user-interface/imsg)

@@ -12,4 +12,5 @@ function improved_multi_select_uninstall() {
   variable_del('improved_multi_select:isall');
   variable_del('improved_multi_select:url');
   variable_del('improved_multi_select:selectors');
+  variable_del('improved_multi_select:filtertype');
 }
