@@ -2,7 +2,7 @@
 
 /**
  * @file
- * The improved_multi_select module main php code.
+ * Replace the default multi-select boxes with two pannel list and search.
  */
 
 /**
@@ -15,7 +15,8 @@ function improved_multi_select_preprocess_page() {
 
   if ($replace_all = variable_get('improved_multi_select:isall', FALSE)) {
     $is_enabled = TRUE;
-  } else {
+  }
+  else {
     if (($url && drupal_match_path(request_path(), $url)) || $selectors) {
       $is_enabled = TRUE;
     }
@@ -46,16 +47,15 @@ function improved_multi_select_preprocess_page() {
  * Implements hook_menu().
  */
 function improved_multi_select_menu() {
-
   $items = array();
 
   $items['admin/config/user-interface/ims'] = array(
-      'title' => 'Improved Multi Select',
-      'description' => 'Configure Improved Multi Select module.',
-      'page callback' => 'drupal_get_form',
-      'page arguments' => array('improved_multi_select_admin'),
-      'access arguments' => array('administer site configuration'),
-      'type' => MENU_NORMAL_ITEM,
+    'title' => 'Improved Multi Select',
+    'description' => 'Configure Improved Multi Select module.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('improved_multi_select_admin'),
+    'access arguments' => array('administer site configuration'),
+    'type' => MENU_NORMAL_ITEM,
   );
 
   return $items;
@@ -65,25 +65,24 @@ function improved_multi_select_menu() {
  * Administration settings page.
  */
 function improved_multi_select_admin($form) {
-
   $form['improved_multi_select:isall'] = array(
-      '#type' => 'checkbox',
-      '#title' => t('Replace all multi-select lists'),
-      '#default_value' => variable_get('improved_multi_select:isall', FALSE),
+    '#type' => 'checkbox',
+    '#title' => t('Replace all multi-select lists'),
+    '#default_value' => variable_get('improved_multi_select:isall', FALSE),
   );
 
   $form['improved_multi_select:url'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Replace multi-select lists on specific pages'),
-      '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
-      '#default_value' => variable_get('improved_multi_select:url', ''),
+    '#type' => 'textarea',
+    '#title' => t('Replace multi-select lists on specific pages'),
+    '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
+    '#default_value' => variable_get('improved_multi_select:url', ''),
   );
 
   $form['improved_multi_select:selectors'] = array(
-      '#type' => 'textarea',
-      '#title' => t('Replace multi-select with specified selectors'),
-      '#description' => t('Enter jQuery selectors (one selector per line). Example: select[multiple]'),
-      '#default_value' => variable_get('improved_multi_select:selectors', ''),
+    '#type' => 'textarea',
+    '#title' => t('Replace multi-select with specified selectors'),
+    '#description' => t('Enter jQuery selectors (one selector per line). Example: select[multiple]'),
+    '#default_value' => variable_get('improved_multi_select:selectors', ''),
   );
 
   $form['improved_multi_select:filtertype'] = array(

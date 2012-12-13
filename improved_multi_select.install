@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Uninstall and install for improved_multi_select module.
+ * Install, update and uninstall functions for the improved_multi_select module.
  */
 
 /**

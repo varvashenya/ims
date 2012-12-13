@@ -1,9 +1,7 @@
 (function ($) {
   Drupal.behaviors.improved_multi_select = {
     attach: function(context, settings) {
-
       if (settings.improved_multi_select && settings.improved_multi_select.selectors) {
-
         var options = settings.improved_multi_select;
 
         for (var key in options.selectors) {
@@ -45,12 +43,15 @@
             if ($select.find('optgroup').has('option').length > 0) {
               $select.parent().find('.improvedselect').addClass('has_group');
               // Build groups.
-              $('#improvedselect-' + improvedselect_id + ' .improvedselect-text-wrapper', context).after('<div class="improvedselect_tabs-wrapper" sid="' + $select.attr('id') + '"><ul class="improvedselect_tabs"></ul></div>');
+              $('#improvedselect-' + improvedselect_id + ' .improvedselect-text-wrapper', context)
+                .after('<div class="improvedselect_tabs-wrapper" sid="' + $select.attr('id') + '"><ul class="improvedselect_tabs"></ul></div>');
               $select.find('optgroup').has('option').each(function() {
-                $('#improvedselect-' + improvedselect_id + ' .improvedselect_tabs', context).append('<li><a href="">' + $(this).attr('label') + '</a></li>');
+                $('#improvedselect-' + improvedselect_id + ' .improvedselect_tabs', context)
+                  .append('<li><a href="">' + $(this).attr('label') + '</a></li>');
               });
               // Show all groups option.
-              $('#improvedselect-' + improvedselect_id + ' .improvedselect_tabs', context).prepend('<li class="all"><a href="">' + Drupal.t('All') + '</a></li>');
+              $('#improvedselect-' + improvedselect_id + ' .improvedselect_tabs', context)
+                .prepend('<li class="all"><a href="">' + Drupal.t('All') + '</a></li>');
               // Select group.
               $('#improvedselect-' + improvedselect_id + ' .improvedselect_tabs li a', context).click(function(e) {
                 var $group = $(this),
@@ -84,7 +85,8 @@
                 group = '';
               if ($opt.attr('tagName') == 'OPTGROUP') {
                 if ($opt.has('option').length) {
-                  $('#improvedselect-'+ improvedselect_id +' .improvedselect_all', context).append('<li isgroup="isgroup" so="---' + $opt.attr('label') + '---">--- '+ $opt.attr('label') +' ---</li>');
+                  $('#improvedselect-'+ improvedselect_id +' .improvedselect_all', context)
+                    .append('<li isgroup="isgroup" so="---' + $opt.attr('label') + '---">--- '+ $opt.attr('label') +' ---</li>');
                 }
               }
               else {
@@ -93,10 +95,12 @@
                   group = ' group="' + group + '"';
                 }
                 if ($opt.attr('selected')) {
-                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_sel', context).append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
+                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_sel', context)
+                    .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
                 }
                 else {
-                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_all', context).append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
+                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_all', context)
+                    .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
                 }
               }
             });
@@ -104,24 +108,24 @@
               $(this).toggleClass('selected');
             });
             $select.hide();
-            // double click feature request
+            // Double click feature request.
             $('#improvedselect-'+ improvedselect_id + ' .improvedselect_sel li, #improvedselect-' + improvedselect_id + ' .improvedselect_all li[isgroup!="isgroup"]', context).dblclick(function() {
-              // store selected items
+              // Store selected items.
               var selected = $(this).parent().find('li.selected'),
                 current_class = $(this).parent().attr('class');
-              // add item
+              // Add item.
               if (current_class == 'improvedselect_all') {
                 $(this).parent().find('li.selected').removeClass('selected');
                 $(this).addClass('selected');
                 $(this).parent().parent().find('.add').click();
               }
-              // remove item
+              // Remove item.
               else {
                 $(this).parent().find('li.selected').removeClass('selected');
                 $(this).addClass('selected');
                 $(this).parent().parent().find('.del').click();
               }
-              // restore selected items
+              // Restore selected items.
               if (selected.length) {
                 for (var k = 0; k < selected.length; k++) {
                   if ($(selected[k]).parent().attr('class') == current_class) {
@@ -144,9 +148,9 @@
         });
 
         // Add selected items.
-        $('.improvedselect .add', context).click(function(){
+        $('.improvedselect .add', context).click(function() {
           var sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_all .selected', context).each(function(){
+          $('#improvedselect-' + sid + ' .improvedselect_all .selected', context).each(function() {
             $opt = $(this);
             $opt.removeClass('selected');
             improvedselectUpdateGroupVisibility($opt, 1);
@@ -156,9 +160,9 @@
         });
 
         // Remove selected items.
-        $('.improvedselect .del', context).click(function(){
+        $('.improvedselect .del', context).click(function() {
           var sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_sel .selected', context).each(function(){
+          $('#improvedselect-' + sid + ' .improvedselect_sel .selected', context).each(function() {
             $opt = $(this);
             $opt.removeClass('selected');
             $('#improvedselect-' + sid + ' .improvedselect_all', context).append($opt);
@@ -172,7 +176,7 @@
         });
 
         // Add all items.
-        $('.improvedselect .add_all', context).click(function(){
+        $('.improvedselect .add_all', context).click(function() {
           var sid = $(this).attr('sid');
           $('#improvedselect-' + sid + ' .improvedselect_all li[isgroup!=isgroup]', context).each(function() {
             $opt = $(this);
@@ -186,9 +190,9 @@
         });
 
         // Remove all items.
-        $('.improvedselect .del_all', context).click(function(){
+        $('.improvedselect .del_all', context).click(function() {
           var sid = $(this).attr('sid');
-          $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
+          $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function() {
             $opt = $(this);
             $opt.removeClass('selected');
             $('#improvedselect-' + sid + ' .improvedselect_all', context).append($opt);
@@ -207,7 +211,7 @@
           $('#improvedselect-' + sid + ' .improvedselect_sel .selected', context).each(function() {
             var $selected = $(this);
             // Don't move selected items past other selected items or there will
-            // be problems when moving multiple items at once. 
+            // be problems when moving multiple items at once.
             $selected.prev(':not(.selected)').before($selected);
           });
           improvedselectUpdate(sid, context);
@@ -221,7 +225,7 @@
           $($('#improvedselect-' + sid + ' .improvedselect_sel .selected', context).get().reverse()).each(function() {
             var $selected = $(this);
             // Don't move selected items past other selected items or there will
-            // be problems when moving multiple items at once. 
+            // be problems when moving multiple items at once.
             $selected.next(':not(.selected)').after($selected);
           });
           improvedselectUpdate(sid, context);
@@ -406,7 +410,8 @@
       }
     });
     // Don't use the $select variable here as it might be the clone.
-    $('#'+ sid, context).trigger('change'); // tell the ajax system the select has changed
+    // Tell the ajax system the select has changed.
+    $('#'+ sid, context).trigger('change');
   }
 
 })(jQuery, Drupal);

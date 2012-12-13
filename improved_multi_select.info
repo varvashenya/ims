@@ -1,5 +1,5 @@
 name = Improved Multi Select
-description = The Improved Multi Select module replace the default multi-select boxes with two pannel list and search.
+description = Replace the default multi-select boxes with two pannel list and search.
 package = Form Elements
 core = 7.x
 configure = admin/config/user-interface/ims
