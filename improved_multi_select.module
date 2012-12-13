@@ -6,7 +6,7 @@
  */
 
 /**
- * Implements templage_preprocess_page().
+ * Implements template_preprocess_page().
  */
 function improved_multi_select_preprocess_page() {
   $is_enabled = FALSE;
