@@ -230,7 +230,11 @@
           });
           improvedselectUpdate(sid, context);
         });
+        // Let other scripts know improvedSelect was initialized
+        $.event.trigger('improvedMultiSelectInitialized', [$(this)]);
       }
+      // Let other scripts know improvedSelect has been attached
+      $.event.trigger('improvedMultiSelectAttached');
     }
   };
 
@@ -411,7 +415,7 @@
     });
     // Don't use the $select variable here as it might be the clone.
     // Tell the ajax system the select has changed.
-    $('#'+ sid, context).trigger('change');
+    $('#' + sid, context).trigger('change');
   }
 
 })(jQuery, Drupal);
