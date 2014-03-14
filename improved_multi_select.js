@@ -129,7 +129,7 @@
   };
 
   function improvedselectUpdate(sid, context) {
-    $('#'+ sid +' option:selected', context).attr("selected", "");
+    $('#'+ sid +' option:selected', context).attr("selected", false);
     $('#improvedselect-'+ sid +' .improvedselect_sel li', context).each(function(){
       $('#'+ sid +' [value="'+ $(this).attr('so') +'"]', context).attr("selected", "selected");
     });
