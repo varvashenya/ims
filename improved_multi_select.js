@@ -145,7 +145,7 @@
           });
         }
 
-        $('.improvedselect_filter', context).keyup(function() {
+        $('.improvedselect_filter', context).bind('input', function() {
           improvedselectFilter($(this).attr('sid'), options, context);
         });
 
