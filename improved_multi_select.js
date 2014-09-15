@@ -390,7 +390,7 @@
       $select = $cloned_select;
     }
     else {
-      $select.find('option:selected').attr("selected", "");
+      $select.find('option:selected').attr("selected", false);
       $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function() {
         $('#' + sid + ' [value="' + $(this).attr('so') + '"]', context).attr("selected", "selected");
       });
