@@ -62,7 +62,7 @@
                 // Any existing selections in the all list need to be unselected
                 // if they aren't part of the newly selected group.
                 if (!$group.hasClass('all')) {
-                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_all li.selected[group!=' + $group.text() + ']', context).removeClass('selected');
+                  $('#improvedselect-' + improvedselect_id + ' .improvedselect_all li.selected[group!="' + $group.text() + '"]', context).removeClass('selected');
                 }
 
                 // Clear the filter if we have to.
