@@ -244,7 +244,7 @@
    * Filter the all options list.
    */
   function improvedselectFilter(sid, options, context) {
-    $filter = $('.improvedselect_filter', context);
+    $filter = $('#improvedselect-' + sid + ' .improvedselect_filter', context);
     // Get current selected group.
     var $selectedGroup = $('#improvedselect-' + sid + ' .improvedselect_tabs li.selected:not(.all) a', context),
       text = $filter.val(),
@@ -383,7 +383,7 @@
       $select.find('option, optgroup').remove();
       $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function() {
         var $li = $(this);
-        $select.append($('<option></option').attr('value', $li.attr('so')).attr('selected', 'selected').text($li.text()));
+        $select.append($('<option></option>').attr('value', $li.attr('so')).attr('selected', 'selected').text($li.text()));
       });
       // Now that the select has the options in the correct order, use the
       // cloned select for resetting the ul values.
