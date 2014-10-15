@@ -83,7 +83,7 @@
             $select.find('option, optgroup').each(function() {
               var $opt = $(this),
                 group = '';
-              if ($opt.attr('tagName') == 'OPTGROUP') {
+              if ($opt[0].tagName == 'OPTGROUP') {
                 if ($opt.has('option').length) {
                   $('#improvedselect-'+ improvedselect_id +' .improvedselect_all', context)
                     .append('<li isgroup="isgroup" so="---' + $opt.attr('label') + '---">--- '+ $opt.attr('label') +' ---</li>');
@@ -398,7 +398,7 @@
 
     $select.find('option, optgroup').each(function() {
       $opt = $(this);
-      if ($opt.attr('tagName') == 'OPTGROUP') {
+      if ($opt[0].tagName == 'OPTGROUP') {
         if ($opt.has('option').length) {
           $('#improvedselect-' + sid + ' .improvedselect_all', context).append($('#improvedselect-' + sid + ' .improvedselect_all [so="---' + $opt.attr('label') + '---"]', context));
         }
