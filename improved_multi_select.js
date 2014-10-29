@@ -97,11 +97,11 @@
                 if ($opt.attr('value') != "_none") {
                   if ($opt.attr('selected')) {
                     $('#improvedselect-' + improvedselect_id + ' .improvedselect_sel', context)
-                      .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
+                      .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.html() + '</li>');
                   }
                   else {
                     $('#improvedselect-' + improvedselect_id + ' .improvedselect_all', context)
-                      .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.text() + '</li>');
+                      .append('<li so="' + $opt.attr('value') + '"' + group + '>' + $opt.html() + '</li>');
                   }
                 }
               }
