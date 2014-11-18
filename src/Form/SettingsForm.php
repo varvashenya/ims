@@ -30,7 +30,6 @@ class SettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
     $config = $this->config('ims.settings');
-    dpm($config->get());
 
     $form['isall'] = array(
       '#type' => 'checkbox',
