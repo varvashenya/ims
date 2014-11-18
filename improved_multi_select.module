@@ -9,6 +9,7 @@
  * Implements template_preprocess_page().
  */
 function improved_multi_select_preprocess_page() {
+  return;
   $is_enabled = FALSE;
   $url = trim(variable_get('improved_multi_select:url', ''));
   $selectors = array_filter(explode("\n", str_replace("\r", "\n", trim(variable_get('improved_multi_select:selectors', '')))));
@@ -41,24 +42,6 @@ function improved_multi_select_preprocess_page() {
       ),
     ), 'setting');
   }
-}
-
-/**
- * Implements hook_menu().
- */
-function improved_multi_select_menu() {
-  $items = array();
-
-  $items['admin/config/user-interface/ims'] = array(
-    'title' => 'Improved Multi Select',
-    'description' => 'Configure Improved Multi Select module.',
-    'page callback' => 'drupal_get_form',
-    'page arguments' => array('improved_multi_select_admin'),
-    'access arguments' => array('administer site configuration'),
-    'type' => MENU_NORMAL_ITEM,
-  );
-
-  return $items;
 }
 
 /**
