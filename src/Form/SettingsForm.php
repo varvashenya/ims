@@ -29,7 +29,7 @@ class SettingsForm extends ConfigFormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
-    $config = $this->config('ims.settings');
+    $config = $this->config('improved_multi_select.settings');
 
     $form['isall'] = array(
       '#type' => 'checkbox',
@@ -153,12 +153,12 @@ class SettingsForm extends ConfigFormBase {
 
     $values = $form_state->getValues();
     foreach ($values as $key => $value) {
-      if (!array_search($key, $values_to_save)) {
+      if (array_search($key, $values_to_save) === FALSE) {
         unset($values[$key]);
       }
     }
 
-    $this->config('ims.settings')->setData($values)->save();
+    $this->config('improved_multi_select.settings')->setData($values)->save();
   }
 
 }
