@@ -10,10 +10,10 @@
  */
 function improved_multi_select_preprocess_page(&$variables) {
   $is_enabled = FALSE;
-  $url = trim(\Drupal::config('improved_multi_select.settings')->get('url', ''));
-  $selectors = array_filter(explode("\n", str_replace("\r", "\n", trim(\Drupal::config('improved_multi_select.settings')->get('selectors', '')))));
+  $url = trim(\Drupal::config('improved_multi_select.settings')->get('url'));
+  $selectors = array_filter(explode("\n", str_replace("\r", "\n", trim(\Drupal::config('improved_multi_select.settings')->get('selectors')))));
 
-  if ($replace_all = \Drupal::config('improved_multi_select.settings')->get('isall', FALSE)) {
+  if ($replace_all = \Drupal::config('improved_multi_select.settings')->get('isall')) {
     $is_enabled = TRUE;
   }
   else {
@@ -29,15 +29,15 @@ function improved_multi_select_preprocess_page(&$variables) {
       'data' => array(
         'improved_multi_select' => array(
           'selectors' => $selectors,
-          'filtertype' => \Drupal::config('improved_multi_select.settings')->get('filtertype', 'partial'),
-          'orderable' => \Drupal::config('improved_multi_select.settings')->get('orderable', FALSE),
-          'groupresetfilter' => \Drupal::config('improved_multi_select.settings')->get('groupresetfilter', FALSE),
-          'buttontext_add' => \Drupal::config('improved_multi_select.settings')->get('buttontext_add', '>'),
-          'buttontext_addall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_addall', '»'),
-          'buttontext_del' => \Drupal::config('improved_multi_select.settings')->get('buttontext_del', '<'),
-          'buttontext_delall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_delall', '«'),
-          'buttontext_moveup' => \Drupal::config('improved_multi_select.settings')->get('buttontext_moveup', 'Move up'),
-          'buttontext_movedown' => \Drupal::config('improved_multi_select.settings')->get('buttontext_movedown', 'Move down'),
+          'filtertype' => \Drupal::config('improved_multi_select.settings')->get('filtertype'),
+          'orderable' => \Drupal::config('improved_multi_select.settings')->get('orderable'),
+          'groupresetfilter' => \Drupal::config('improved_multi_select.settings')->get('groupresetfilter'),
+          'buttontext_add' => \Drupal::config('improved_multi_select.settings')->get('buttontext_add'),
+          'buttontext_addall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_addall'),
+          'buttontext_del' => \Drupal::config('improved_multi_select.settings')->get('buttontext_del'),
+          'buttontext_delall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_delall'),
+          'buttontext_moveup' => \Drupal::config('improved_multi_select.settings')->get('buttontext_moveup'),
+          'buttontext_movedown' => \Drupal::config('improved_multi_select.settings')->get('buttontext_movedown'),
         ),
       ),
       'type' => 'setting',

@@ -34,21 +34,21 @@ class SettingsForm extends ConfigFormBase {
     $form['isall'] = array(
       '#type' => 'checkbox',
       '#title' => t('Replace all multi-select lists'),
-      '#default_value' => $config->get('isall', FALSE),
+      '#default_value' => $config->get('isall'),
     );
 
     $form['url'] = array(
       '#type' => 'textarea',
       '#title' => t('Replace multi-select lists on specific pages'),
       '#description' => t("Specify pages by using their paths. Enter one path per line. The '*' character is a wildcard. Example paths are %blog for the blog page and %blog-wildcard for every personal blog. %front is the front page.", array('%blog' => 'blog', '%blog-wildcard' => 'blog/*', '%front' => '<front>')),
-      '#default_value' => $config->get('url', ''),
+      '#default_value' => $config->get('url'),
     );
 
     $form['selectors'] = array(
       '#type' => 'textarea',
       '#title' => t('Replace multi-select with specified selectors'),
       '#description' => t('Enter jQuery selectors (one selector per line). Example: select[multiple]'),
-      '#default_value' => $config->get('selectors', ''),
+      '#default_value' => $config->get('selectors'),
     );
 
     $form['filtertype'] = array(
@@ -63,21 +63,21 @@ class SettingsForm extends ConfigFormBase {
         'allwords' => t('All words: Shows options that contain all of the individual words in the filter text (in any order). Only exact word matches count.'),
         'allwords_partial' => t('All words (partial): Shows options that contain all of the individual words in the filter text (in any order). Partial word matches count.'),
       ),
-      '#default_value' => $config->get('filtertype', 'partial'),
+      '#default_value' => $config->get('filtertype'),
     );
 
     $form['orderable'] = array(
       '#type' => 'checkbox',
       '#title' => t('Allow re-ordering of selected items'),
       '#description' => t('If checked, the user will be able to re-order the selected items using "Move up" and "Move down" buttons. Also, when adding items they will remain in the order they were added instead of keeping the order of the original field.'),
-      '#default_value' => $config->get('orderable', FALSE),
+      '#default_value' => $config->get('orderable'),
     );
 
     $form['groupresetfilter'] = array(
       '#type' => 'checkbox',
       '#title' => t('Reset filter when selecting a group'),
       '#description' => t('If checked and a select has optgroups, when a group is selected the filter text field is cleared. If unchecked, any existing filter will be applied only to items of the selected group.'),
-      '#default_value' => $config->get('groupresetfilter', FALSE),
+      '#default_value' => $config->get('groupresetfilter'),
     );
 
     $form['button_text'] = array(
@@ -88,27 +88,27 @@ class SettingsForm extends ConfigFormBase {
     $form['button_text']['buttontext_add'] = array(
       '#type' => 'textfield',
       '#title' => t('Add button'),
-      '#default_value' => $config->get('buttontext_add', '>'),
+      '#default_value' => $config->get('buttontext_add'),
     );
     $form['button_text']['buttontext_addall'] = array(
       '#type' => 'textfield',
       '#title' => t('Add all button'),
-      '#default_value' => $config->get('buttontext_addall', '»'),
+      '#default_value' => $config->get('buttontext_addall'),
     );
     $form['button_text']['buttontext_del'] = array(
       '#type' => 'textfield',
       '#title' => t('Remove button'),
-      '#default_value' => $config->get('buttontext_del', '<'),
+      '#default_value' => $config->get('buttontext_del'),
     );
     $form['button_text']['buttontext_delall'] = array(
       '#type' => 'textfield',
       '#title' => t('Remove all button'),
-      '#default_value' => $config->get('buttontext_delall', '«'),
+      '#default_value' => $config->get('buttontext_delall'),
     );
     $form['button_text']['buttontext_moveup'] = array(
       '#type' => 'textfield',
       '#title' => t('Move up button'),
-      '#default_value' => $config->get('buttontext_moveup', 'Move up'),
+      '#default_value' => $config->get('buttontext_moveup'),
       '#states' => array(
         // Hide the settings when the move buttons are disabled.
         'invisible' => array(
@@ -119,7 +119,7 @@ class SettingsForm extends ConfigFormBase {
     $form['button_text']['buttontext_movedown'] = array(
       '#type' => 'textfield',
       '#title' => t('Move down button'),
-      '#default_value' => $config->get('buttontext_movedown', 'Move down'),
+      '#default_value' => $config->get('buttontext_movedown'),
       '#states' => array(
         // Hide the settings when the move buttons are disabled.
         'invisible' => array(
