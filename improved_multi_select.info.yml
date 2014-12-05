@@ -2,7 +2,6 @@ package: Form Elements
 name: 'Improved Multi Select'
 type: module
 description: 'Improved Multi Select'
-package: Web services
 version: VERSION
 core: 8.x
 configure: ims.settings

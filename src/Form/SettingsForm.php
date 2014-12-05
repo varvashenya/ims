@@ -2,7 +2,7 @@
 
 /**
  * @file
- * Contains \Drupal\devel\Form\SettingsForm.
+ * Contains \Drupal\improved_multi_select\Form\SettingsForm.
  */
 
 namespace Drupal\improved_multi_select\Form;
@@ -14,7 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Url;
 
 /**
- * Defines a form that configures devel settings.
+ * Defines a form that configures improved_multi_select settings.
  */
 class SettingsForm extends ConfigFormBase {
 
