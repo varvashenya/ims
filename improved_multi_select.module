@@ -23,6 +23,7 @@ function improved_multi_select_preprocess_page(&$variables) {
   }
   if ($is_enabled) {
     $selectors = improved_multi_select_load_selectors($replace_all, $selectors);
+    // @todo: rewrite as a library, add jQuery dependency.
     $variables['#attached']['css'][drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css'] = array();
     $variables['#attached']['js'][drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js'] = array();
     $variables['#attached']['js'][] = array(
