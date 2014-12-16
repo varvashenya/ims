@@ -23,26 +23,19 @@ function improved_multi_select_preprocess_page(&$variables) {
   }
   if ($is_enabled) {
     $selectors = improved_multi_select_load_selectors($replace_all, $selectors);
-    // @todo: rewrite as a library, add jQuery dependency.
-    $variables['#attached']['css'][drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.css'] = array();
-    $variables['#attached']['js'][drupal_get_path('module', 'improved_multi_select') . '/improved_multi_select.js'] = array();
-    $variables['#attached']['js'][] = array(
-      'data' => array(
-        'improved_multi_select' => array(
-          'selectors' => $selectors,
-          'filtertype' => \Drupal::config('improved_multi_select.settings')->get('filtertype'),
-          'orderable' => \Drupal::config('improved_multi_select.settings')->get('orderable'),
-          'groupresetfilter' => \Drupal::config('improved_multi_select.settings')->get('groupresetfilter'),
-          'buttontext_add' => \Drupal::config('improved_multi_select.settings')->get('buttontext_add'),
-          'buttontext_addall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_addall'),
-          'buttontext_del' => \Drupal::config('improved_multi_select.settings')->get('buttontext_del'),
-          'buttontext_delall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_delall'),
-          'buttontext_moveup' => \Drupal::config('improved_multi_select.settings')->get('buttontext_moveup'),
-          'buttontext_movedown' => \Drupal::config('improved_multi_select.settings')->get('buttontext_movedown'),
-        ),
-      ),
-      'type' => 'setting',
-    );
+    $variables['#attached']['library'][] = 'improved_multi_select/ims';
+    $variables['#attached']['drupalSettings']['improved_multi_select'] = [
+      'selectors' => $selectors,
+      'filtertype' => \Drupal::config('improved_multi_select.settings')->get('filtertype'),
+      'orderable' => \Drupal::config('improved_multi_select.settings')->get('orderable'),
+      'groupresetfilter' => \Drupal::config('improved_multi_select.settings')->get('groupresetfilter'),
+      'buttontext_add' => \Drupal::config('improved_multi_select.settings')->get('buttontext_add'),
+      'buttontext_addall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_addall'),
+      'buttontext_del' => \Drupal::config('improved_multi_select.settings')->get('buttontext_del'),
+      'buttontext_delall' => \Drupal::config('improved_multi_select.settings')->get('buttontext_delall'),
+      'buttontext_moveup' => \Drupal::config('improved_multi_select.settings')->get('buttontext_moveup'),
+      'buttontext_movedown' => \Drupal::config('improved_multi_select.settings')->get('buttontext_movedown'),
+    ];
   }
 }
 
