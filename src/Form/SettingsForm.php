@@ -28,6 +28,13 @@ class SettingsForm extends ConfigFormBase {
   /**
    * {@inheritdoc}
    */
+  protected function getEditableConfigNames() {
+    return ['improved_multi_select.settings'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function buildForm(array $form, FormStateInterface $form_state, Request $request = NULL) {
     $config = $this->config('improved_multi_select.settings');
 
