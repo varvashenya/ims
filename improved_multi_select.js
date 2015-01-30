@@ -140,7 +140,11 @@
             // Set the height of the select fields based on the height of the
             // parent, otherwise it can end up with a lot of wasted space.
             $('.improvedselect_sel, .improvedselect_all').each(function() {
-              $(this).height($(this).parent().height() - 35);
+              if ($(this).parent().height() > 0 ) {
+                $(this).height($(this).parent().height() - 35);
+              }
+              // @todo: Element is hidden - we can't detect its height.
+              else {}
             });
           });
         }
