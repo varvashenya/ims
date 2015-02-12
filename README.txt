@@ -67,6 +67,10 @@ Settings can be configured at admin/config/user-interface/ims
    - These settings allow admins to customize the text or symbols for the
      buttons on the improved multi-select widgets.
 
+ * Button Hints
+   - These settings allow admins to customize the text for the buttons
+     hints on the improved multi-select widgets.
+
 The administration settings for this module can be configured by users with the
 "administer site configuration" permission.
 

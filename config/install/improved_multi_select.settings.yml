@@ -4,9 +4,18 @@ selectors:
 filtertype: 'partial'
 orderable: FALSE
 groupresetfilter: FALSE
-buttontext_add: '>'
-buttontext_addall: '»'
-buttontext_del: '<'
-buttontext_delall: '«'
-buttontext_moveup: 'Move up'
-buttontext_movedown: 'Move down'
+button:
+  text:
+    add: '>'
+    addall: '»'
+    del: '<'
+    delall: '«'
+    moveup: '↑'
+    movedown: '↓'
+  hint:
+    add: 'Add selected'
+    addall: 'Add all'
+    del: 'Remove selected'
+    delall: 'Remove all'
+    moveup: 'Move selected and added item up'
+    movedown: 'Move selected and added item down'

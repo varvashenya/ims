@@ -1,7 +1,7 @@
 package: Form Elements
-name: 'Improved Multi Select'
+name: Improved Multi Select
 type: module
-description: 'Improved Multi Select'
+description: Replace the default multi-select boxes with two panels list and filter.
 version: VERSION
 core: 8.x
 configure: ims.settings

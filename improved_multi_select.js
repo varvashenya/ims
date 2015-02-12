@@ -21,25 +21,35 @@
               $cloned_select.attr('id', cloned_select_id);
               $cloned_select.appendTo($select.parent()).hide();
               // Move button markup to add to the widget.
-              moveButtons = '<span class="move_up" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_moveup) + '</span>' +
-                            '<span class="move_down" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_movedown) + '</span>';
+              moveButtons = $(
+                  '<span class="move_up" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.moveup) + '</span>' +
+                  '<span class="move_down" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.movedown) + '</span>');
             }
-            $select.parent().append(
-              '<div class="improvedselect" sid="' + $select.attr('id') + '" id="improvedselect-' + $select.attr('id') + '">' +
+            var imsContent =
+              $('<div class="improvedselect" sid="' + $select.attr('id') + '" id="improvedselect-' + $select.attr('id') + '">' +
                 '<div class="improvedselect-text-wrapper">' +
                   '<input type="text" class="improvedselect_filter" sid="' + $select.attr('id') + '" prev="" />' +
                 '</div>' +
                 '<ul class="improvedselect_sel"></ul>' +
                 '<ul class="improvedselect_all"></ul>' +
                 '<div class="improvedselect_control">' +
-                  '<span class="add" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_add) + '</span>' +
-                  '<span class="del" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_del) + '</span>' +
-                  '<span class="add_all" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_addall) + '</span>' +
-                  '<span class="del_all" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.buttontext_delall) + '</span>' +
-                  moveButtons +
+                  '<span class="add" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.add) + '</span>' +
+                  '<span class="del" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.del) + '</span>' +
+                  '<span class="add_all" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.addall) + '</span>' +
+                  '<span class="del_all" sid="' + $select.attr('id') + '">' + Drupal.checkPlain(options.button.text.delall) + '</span>' +
                 '</div>' +
                 '<div class="clear"></div>' +
               '</div>');
+            if (moveButtons) {
+              $('.improvedselect_control', imsContent).append(moveButtons);
+              $('.move_up', imsContent).attr('title', options.button.hint.moveup);
+              $('.move_down', imsContent).attr('title', options.button.hint.movedown);
+            }
+            $('.add', imsContent).attr('title', options.button.hint.add);
+            $('.del', imsContent).attr('title', options.button.hint.del);
+            $('.add_all', imsContent).attr('title', options.button.hint.addall);
+            $('.del_all', imsContent).attr('title', options.button.hint.delall);
+            $select.parent().append(imsContent);
             if ($select.find('optgroup').has('option').length > 0) {
               $select.parent().find('.improvedselect').addClass('has_group');
               // Build groups.
@@ -383,6 +393,7 @@
     var $select = $('#' + sid),
       $cloned_select = $('#' + sid + '-cloned');
 
+    // Move up/down
     if ($cloned_select.length) {
       $select.find('option, optgroup').remove();
       $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function() {
@@ -392,15 +403,21 @@
       // Now that the select has the options in the correct order, use the
       // cloned select for resetting the ul values.
       $select = $cloned_select;
+      $select.find('option:selected').attr("selected", false);
     }
+    // No move up/down buttons
     else {
       $select.find('option:selected').attr("selected", false);
-      $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function() {
+      $select.find('option:selected').prop("selected", false);
+      console.log('=====');
+      $('#improvedselect-' + sid + ' .improvedselect_sel li', context).each(function () {
         $('#' + sid + ' [value="' + $(this).attr('so') + '"]', context).attr("selected", "selected");
+        $('#' + sid + ' [value="' + $(this).attr('so') + '"]', context).prop("selected", true);
+        console.log('#' + sid + ' [value="' + $(this).attr('so') + '"]');
       });
     }
 
-    $select.find('option, optgroup').each(function() {
+    /*$select.find('option, optgroup').each(function() {
       $opt = $(this);
       if ($opt[0].tagName == 'OPTGROUP') {
         if ($opt.has('option').length) {
@@ -418,7 +435,7 @@
           $('#improvedselect-' + sid + ' .improvedselect_all', context).append($('#improvedselect-' + sid + ' .improvedselect_all [so="' + $opt.attr('value') + '"]', context));
         }
       }
-    });
+    });*/
     // Don't use the $select variable here as it might be the clone.
     // Tell the ajax system the select has changed.
     $('#' + sid, context).trigger('change');
