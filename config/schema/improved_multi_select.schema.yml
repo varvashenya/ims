@@ -22,21 +22,51 @@ improved_multi_select.settings:
     groupresetfilter:
       type: boolean
       label: 'Reset filter when selecting a group'
-    buttontext_add:
-      type: string
-      label: 'Add button text'
-    buttontext_addall:
-      type: string
-      label: 'Add all button text'
-    buttontext_del:
-      type: string
-      label: 'Remove button text'
-    buttontext_delall:
-      type: string
-      label: 'Delete all button text'
-    buttontext_moveup:
-      type: string
-      label: 'Move up button text'
-    buttontext_movedown:
-      type: string
-      label: 'Move down button text'
+    button:
+      type: mapping
+      label: 'UI buttons settings'
+      mapping:
+        text:
+          type: mapping
+          label: 'Buttons texts'
+          mapping:
+            add:
+              type: string
+              label: 'Add button text'
+            addall:
+              type: string
+              label: 'Add all button text'
+            del:
+              type: string
+              label: 'Remove button text'
+            delall:
+              type: string
+              label: 'Delete all button text'
+            moveup:
+              type: string
+              label: 'Move up button text'
+            movedown:
+              type: string
+              label: 'Move down button text'
+        hint:
+          type: mapping
+          label: 'Buttons hints'
+          mapping:
+            add:
+              type: string
+              label: 'Add button hint'
+            addall:
+              type: string
+              label: 'Add all button hint'
+            del:
+              type: string
+              label: 'Remove button hint'
+            delall:
+              type: string
+              label: 'Delete all button hint'
+            moveup:
+              type: string
+              label: 'Move up button hint'
+            movedown:
+              type: string
+              label: 'Move down button hint'
