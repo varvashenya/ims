@@ -1,9 +1,9 @@
-isall: FALSE
+isall: false
 url: ''
-selectors:
+selectors: ''
 filtertype: 'partial'
-orderable: FALSE
-groupresetfilter: FALSE
+orderable: false
+groupresetfilter: false
 button:
   text:
     add: '>'
